@@ -9,7 +9,7 @@ sys.path.insert(1, '../../cases')
 from pages.loginPage import LoginPage
 from pages.homePage import HomePage
 
-class LoginTest(unittest.TestCase):
+class AllFunctionsTestCases(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
