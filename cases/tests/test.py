@@ -13,44 +13,37 @@ from pages.infoPage import InfoPage
 class AllFunctionsTestCases(unittest.TestCase):
 
     @classmethod
-    def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path='../../drivers/chromedriver')
-        cls.driver.implicitly_wait(10)
-        cls.driver.maximize_window()
+    def setUpClass(self):
+        self.driver = webdriver.Chrome(executable_path='../../drivers/chromedriver')
+        self.driver.implicitly_wait(10)
+        self.driver.maximize_window()
+        self.driver.get("https://opensource-demo.orangehrmlive.com/")
         
 
     def test_login_and_logout_valid(self):
         driver = self.driver
-        driver.get("https://opensource-demo.orangehrmlive.com/")
         # login 
-        login = LoginPage(driver)
-        login.enter_username("Admin")
-        login.enter_password("admin123")
-        login.click_login()  
+        loginPage = LoginPage(driver)
+        loginPage.login("Admin", "admin123") 
         # logout 
-        logout = HomePage(driver)
-        logout.click_welcome()
-        logout.click_logout()
+        loginPage.logout()
 
     def test_update_my_info(self):
         driver = self.driver
-        driver.get("https://opensource-demo.orangehrmlive.com/")
+        infoPage = InfoPage(driver)
         # login 
-        info = InfoPage(driver)
-        info.enter_username("Admin")
-        info.enter_password("admin123")
-        info.click_login()  
+        infoPage.login("Admin", "admin123") 
         # update user 
-        info.update_personal_detail()
+        infoPage.update_personal_detail()
+        driver.back()
         # logout 
-        info.click_welcome()
-        info.click_logout()
+        infoPage.logout()
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(self):
         time.sleep(4)
-        cls.driver.close()
-        cls.driver.quit()
+        self.driver.close()
+        self.driver.quit()
 
 
 if __name__ == '__main__':

@@ -4,7 +4,10 @@ import sys
 sys.path.insert(2, '../../cases')
 sys.path.insert(3, '../pages')
 
-from utils.values import Values
+
+from selenium.webdriver.support.ui import Select
+
+from utils.locators import Locators
 from utils.functions import UtilsFunctions
 from pages.loginPage import LoginPage
 
@@ -16,23 +19,26 @@ class InfoPage(LoginPage, UtilsFunctions):
 
     def update_personal_detail(self):
         time.sleep(2)
-        self.driver.find_element_by_id(Values.my_info_link_id).click()
+        self.driver.find_element_by_id(Locators.my_info_link_id).click()
         time.sleep(1)
-        self.driver.find_element_by_id(Values.save_button_id).click()
+        self.driver.find_element_by_id(Locators.save_button_id).click()
         time.sleep(1)
-        self.driver.find_element_by_id(Values.personal_firstname_textbox_id).clear()
-        self.driver.find_element_by_id(Values.personal_firstname_textbox_id).send_keys("Fortune")
+        self.driver.find_element_by_id(Locators.personal_firstname_textbox_id).clear()
+        self.driver.find_element_by_id(Locators.personal_firstname_textbox_id).send_keys("Fortune")
         time.sleep(1)
-        self.driver.find_element_by_id(Values.personal_middlename_textbox_id).clear()
-        self.driver.find_element_by_id(Values.personal_middlename_textbox_id).send_keys("Mensah")
+        self.driver.find_element_by_id(Locators.personal_middlename_textbox_id).clear()
+        self.driver.find_element_by_id(Locators.personal_middlename_textbox_id).send_keys("Mensah")
         time.sleep(1)
-        self.driver.find_element_by_id(Values.personal_lastname_textbox_id).clear()
-        self.driver.find_element_by_id(Values.personal_lastname_textbox_id).send_keys("Tede")
+        self.driver.find_element_by_id(Locators.personal_lastname_textbox_id).clear()
+        self.driver.find_element_by_id(Locators.personal_lastname_textbox_id).send_keys("Tede")
         time.sleep(1)
-        self.driver.find_element_by_id(Values.personal_licexpdate_textbox_id).clear()
-        self.driver.find_element_by_id(Values.personal_licexpdate_textbox_id).send_keys("2025-10-16")
+        self.driver.find_element_by_id(Locators.personal_licexpdate_textbox_id).clear()
+        self.driver.find_element_by_id(Locators.personal_licexpdate_textbox_id).send_keys("2025-10-16")
         time.sleep(1)
-        self.driver.find_element_by_id(Values.save_button_id).click()
+        select_element = Select(self.driver.find_element_by_id(Locators.personal_marital_selectbox_id))
+        select_element.select_by_value("Single")
+        time.sleep(1)
+        self.driver.find_element_by_id(Locators.save_button_id).click()
 
 
         
