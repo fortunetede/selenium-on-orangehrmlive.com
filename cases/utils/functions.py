@@ -1,10 +1,10 @@
 import time
 
 import sys
-sys.path.insert(2, '../../cases')
-from utils.values import Values
+sys.path.insert(2, '../utils')
+from values import Values
 
-class HomePage():
+class UtilsFunctions():
 
     def __init__(self, driver):
         self.driver = driver
