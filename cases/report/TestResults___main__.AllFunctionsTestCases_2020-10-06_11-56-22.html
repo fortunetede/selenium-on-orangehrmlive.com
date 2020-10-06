@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2020-10-05 15:42:43</p>
-                <p class='attribute'><strong>Duration: </strong>53.04 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 2, Pass: 2</p>
+                <p class='attribute'><strong>Start Time: </strong>2020-10-06 11:56:22</p>
+                <p class='attribute'><strong>Duration: </strong>39.92 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Fail: 1</p>
             </div>
         </div>
         <div class="row">
@@ -27,25 +27,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class='success'>
-                            <td class="col-xs-10">test_login_and_logout_valid</td>
-                            <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
-                            </td>
-                            <td class="col-xs-1">
-                            </td>
-                        </tr>
-                        <tr class='success'>
+                        <tr class='danger'>
                             <td class="col-xs-10">test_update_my_info</td>
                             <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
                             </td>
                             <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: '' != 'Fortune'
++ Fortune : check user update</p><p style="color:maroon;">Traceback (most recent call last):
+  File "test.py", line 45, in test_update_my_info
+    self.assertEqual(check_usrname_update, "Fortune", "check user update")
+AssertionError: '' != 'Fortune'
++ Fortune : check user update
+</p>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 2, Pass: 2 -- Duration: 53.04 s
+                                Total: 1, Pass: 0, Fail: 1 -- Duration: 39.92 s
                             </td>
                         </tr>
                     </tbody>

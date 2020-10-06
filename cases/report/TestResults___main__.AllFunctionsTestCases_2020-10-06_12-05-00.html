@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2020-10-05 15:17:41</p>
-                <p class='attribute'><strong>Duration: </strong>30.23 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 2, Pass: 0, Error: 2</p>
+                <p class='attribute'><strong>Start Time: </strong>2020-10-06 12:05:00</p>
+                <p class='attribute'><strong>Duration: </strong>36.97 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 1, Pass: 0, Error: 1</p>
             </div>
         </div>
         <div class="row">
@@ -28,23 +28,6 @@
                     </thead>
                     <tbody>
                         <tr class='warning'>
-                            <td class="col-xs-10">test_login_and_logout_valid</td>
-                            <td class="col-xs-1">
-                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
-                            </td>
-                            <td class="col-xs-1">
-                                <button class="btn btn-default btn-xs">View</button>
-                            </td>
-                        </tr>
-                        <tr style="display:none;">
-                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AttributeError: 'HomePage' object has no attribute 'logout'</p><p style="color:maroon;">Traceback (most recent call last):
-  File "test.py", line 32, in test_login_and_logout_valid
-    logout.logout()
-AttributeError: 'HomePage' object has no attribute 'logout'
-</p>
-                            </td>
-                        </tr>
-                        <tr class='warning'>
                             <td class="col-xs-10">test_update_my_info</td>
                             <td class="col-xs-1">
                                 <span class="label label-warning" style="display:block;width:40px;">Error</span>
@@ -54,13 +37,13 @@ AttributeError: 'HomePage' object has no attribute 'logout'
                             </td>
                         </tr>
                         <tr style="display:none;">
-                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="txtUsername"]"}
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btnSave"]"}
   (Session info: chrome=85.0.4183.121)
 </p><p style="color:maroon;">Traceback (most recent call last):
-  File "test.py", line 40, in test_update_my_info
-    infoPage.login("Admin", "admin123")
-  File "../../cases/utils/functions.py", line 15, in login
-    self.driver.find_element_by_id(Values.username_textbox_id).clear()
+  File "test.py", line 39, in test_update_my_info
+    infoPage.update_personal_detail()
+  File "../../cases/pages/infoPage.py", line 29, in update_personal_detail
+    driver.find_element_by_id(Locators.save_button_id).click()
   File "/usr/local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 360, in find_element_by_id
     return self.find_element(by=By.ID, value=id_)
   File "/usr/local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
@@ -69,7 +52,7 @@ AttributeError: 'HomePage' object has no attribute 'logout'
     self.error_handler.check_response(response)
   File "/usr/local/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="txtUsername"]"}
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="btnSave"]"}
   (Session info: chrome=85.0.4183.121)
 
 </p>
@@ -77,7 +60,7 @@ selenium.common.exceptions.NoSuchElementException: Message: no such element: Una
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 2, Pass: 0, Error: 2 -- Duration: 30.23 s
+                                Total: 1, Pass: 0, Error: 1 -- Duration: 36.97 s
                             </td>
                         </tr>
                     </tbody>
