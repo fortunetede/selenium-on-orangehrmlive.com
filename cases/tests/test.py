@@ -9,15 +9,16 @@ sys.path.insert(1, '../../cases')
 from pages.loginPage import LoginPage
 from pages.homePage import HomePage
 from pages.infoPage import InfoPage
+from pages.adminPage import AdminPage
 
 from utils.functions import UtilsFunctions
 
 from utils.locators import Locators
 
 class SystemProgramTestCases(unittest.TestCase):
-    '''
-    This code test all function in https://opensource-demo.orangehrmlive.com/
-    '''
+    # '''
+    # This code test all function in https://opensource-demo.orangehrmlive.com/
+    # '''
 
     @classmethod
     def setUpClass(self):
@@ -52,6 +53,11 @@ class SystemProgramTestCases(unittest.TestCase):
         self.assertEqual(check_usrname_update, "Tede") # validate last name
         check_usrname_update = driver.find_element_by_id(Locators.personal_licexpdate_textbox_id).get_attribute('value') 
         self.assertEqual(check_usrname_update, "2025-10-16") # validate licexpdate
+
+    def test_4_add_user(self):
+        driver = self.driver
+        adminPage = AdminPage(driver)
+        adminPage.add_new_user() 
 
     def test_z_logout(self):
         driver = self.driver
