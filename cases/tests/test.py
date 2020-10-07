@@ -10,9 +10,14 @@ from pages.loginPage import LoginPage
 from pages.homePage import HomePage
 from pages.infoPage import InfoPage
 
+from utils.functions import UtilsFunctions
+
 from utils.locators import Locators
 
-class AllFunctionsTestCases(unittest.TestCase):
+class SystemProgramTestCases(unittest.TestCase):
+    '''
+    This code test all function in https://opensource-demo.orangehrmlive.com/
+    '''
 
     @classmethod
     def setUpClass(self):
@@ -21,20 +26,21 @@ class AllFunctionsTestCases(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.get("https://opensource-demo.orangehrmlive.com/")
         
-
-    def test_login_and_logout_valid(self):
+    def test_1_invalid_login(self):
         driver = self.driver
-        # login 
+        loginPage = LoginPage(driver)
+        loginPage.login("Admin", "admin1233") 
+        error_message = driver.find_element_by_id("spanMessage").text
+        self.assertEqual(error_message, "Invalid credentials") # check if login fialed
+
+    def test_2_valid_login(self):
+        driver = self.driver
         loginPage = LoginPage(driver)
         loginPage.login("Admin", "admin123") 
-        # logout 
-        loginPage.logout()
 
-    def test_update_my_info(self):
+    def test_3_update_my_info(self):
         driver = self.driver
         infoPage = InfoPage(driver)
-        # login 
-        infoPage.login("Admin", "admin123") 
         # update user 
         infoPage.update_personal_detail()
         # # validate user update
@@ -46,8 +52,11 @@ class AllFunctionsTestCases(unittest.TestCase):
         self.assertEqual(check_usrname_update, "Tede") # validate last name
         check_usrname_update = driver.find_element_by_id(Locators.personal_licexpdate_textbox_id).get_attribute('value') 
         self.assertEqual(check_usrname_update, "2025-10-16") # validate licexpdate
-        # logout 
-        infoPage.logout()
+
+    def test_z_logout(self):
+        driver = self.driver
+        logoutFunction = UtilsFunctions(driver)
+        logoutFunction.logout()
 
     @classmethod
     def tearDownClass(self):
